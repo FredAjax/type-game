@@ -49,10 +49,11 @@ function startTimer(){
 }
 let remainingWord = [];
 function wordChecker(){
+    typeArea.value = typeArea.value.toLowerCase();
     let finalWord = wordArea.querySelectorAll("div")[0].innerText;
     let correctWord = [];
     
-    if(typeArea.value.replaceAll(" ","") == finalWord){
+    if(typeArea.value.replaceAll(" ","").toLowerCase() == finalWord){
         wordArea.querySelectorAll("div")[0].style.color = "green";
         typeArea.value = "";
         scoreVal+=10;
@@ -62,7 +63,7 @@ function wordChecker(){
             wordArea.querySelectorAll("div")[0].remove();
         }, 300);
     }
-    if(typeArea.value.replaceAll(" ","").length>0 && typeArea.value.replaceAll(" ","") == finalWord.split("",typeArea.value.replaceAll(" ","").length).join("")){
+    if(typeArea.value.replaceAll(" ","").length>0 && typeArea.value.replaceAll(" ","").toLowerCase() == finalWord.split("",typeArea.value.replaceAll(" ","").length).join("")){
         correctWord = finalWord.split("",typeArea.value.replaceAll(" ","").length);
         remainingWord = finalWord.split("").splice(correctWord.length);
         console.log(remainingWord);
